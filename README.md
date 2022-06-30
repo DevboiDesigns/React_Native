@@ -13,6 +13,14 @@
 
 - `expo init <NameOfProject>`
 
+**Start App**
+
+- `npm start`
+
+**Will generate URL for dev tools**
+
+- scan QR code from dev tools URL on phone
+
 **Commands available**
 
 - cd TestProj
@@ -20,10 +28,6 @@
 - yarn android
 - yarn ios
 - yarn web
-
-**Will generate URL for dev tools**
-
-- scan QR code from dev tools URL on phone
 
 ### Android Studio
 
