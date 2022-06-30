@@ -31,6 +31,11 @@
 - yarn ios
 - yarn web
 
+**LAUNCH EMULATOR & SIMULATOR**
+
+- a (android)
+- i (iOS)
+
 ### Android Studio
 
 - Virtual Device Manager
