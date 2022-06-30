@@ -7,6 +7,7 @@
 
 - [Docs](https://docs.expo.dev)
 - `sudo npm install -g expo-cli`
+- download Expo app from app store
 
 **Init new Project**
 
@@ -19,3 +20,12 @@
 - yarn android
 - yarn ios
 - yarn web
+
+**Will generate URL for dev tools**
+
+- scan QR code from dev tools URL on phone
+
+### Android Studio
+
+- Virtual Device Manager
+- Create Device to add Emulator/ Sim
