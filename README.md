@@ -33,3 +33,10 @@
 
 - Virtual Device Manager
 - Create Device to add Emulator/ Sim
+
+# Components as Compiled
+
+| Web Browser | Native Components (android) | Native Components (iOS) | React Native JSX |
+| ----------- | --------------------------- | ----------------------- | ---------------- |
+| <div>       | android.view                | UIView                  | <View>           |
+| <input>     | EditText                    | UITextField             | <TextInput>      |
