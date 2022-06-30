@@ -1,11 +1,13 @@
 # React Native Config
 
+- [React Native Docs](https://reactnative.dev/docs/getting-started)
+- [React Native Core Components](https://reactnative.dev/docs/components-and-apis)
 - Expo CLI (very convenient, less friction)
 - React Native CLI
 
 ## Expo Config
 
-- [Docs](https://docs.expo.dev)
+- [Expo Docs](https://docs.expo.dev)
 - `sudo npm install -g expo-cli`
 - download Expo app from app store
 
