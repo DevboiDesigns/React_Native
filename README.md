@@ -1,6 +1,34 @@
+
+**work in progress**
+
 # React Native
 
 - Expo to view app
+
+# Deploying
+
+## Yarn
+
+- [Docs](https://yarnpkg.com)
+- terminal at project dir
+
+* to Enable
+
+`corepack enable`
+
+## Expo
+
+`sudo npm install -g expo-cli`
+
+### Run Locally
+
+**Terminal at Dir**
+
+- `yarn` (installs all dependencys needed)
+
+* `yarn ios` (launch on Sim)
+
+# UI/UX
 
 ## Styles
 
@@ -93,6 +121,64 @@ const styles = StyleSheet.create({
 });
 ```
 
+## Using State
+
+```js
+import React, { useState } from "react"; // ------------------------------------ Import
+import { View, Text, StyleSheet } from "react-native";
+import { TextInput } from "react-native-paper";
+import { colors } from "../utils/colors";
+
+export const Focus = () => {
+  const [subject, setSubject] = useState(null); // ------------------------------------ Set Constant
+
+  console.log(subject);
+
+  return (
+    <View style={styles.container}>
+      <View style={styles.inputContainer}>
+        // --------------------------------------------------------- Usage
+        <TextInput
+          onChangeText={setSubject}
+          label="What would you like to focus on?"
+        />
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  inputContainer: {
+    flex: 0.5,
+    padding: 50,
+    justifyContent: "top",
+  },
+});
+```
+
+## Fragment
+
+- define multiple elements without defining in same view
+
+`<>#Views#</>`
+
+```js
+<>
+  <View style={styles.timingButton}>
+    <RoundedButton size={75} title="10" onPress={() => onChangeTime(10)} />
+  </View>
+  <View style={styles.timingButton}>
+    <RoundedButton size={75} title="15" onPress={() => onChangeTime(15)} />
+  </View>
+  <View style={styles.timingButton}>
+    <RoundedButton size={75} title="20" onPress={() => onChangeTime(20)} />
+  </View>
+</>
+```
+
 # React Native Paper - components
 
 - [Docs](https://callstack.github.io/react-native-paper/)
@@ -125,64 +211,4 @@ const styles = StyleSheet.create({
     color: colors.white,
   },
 });
-```
-
-### Using State
-
-```js
-import React, { useState } from "react"; // ------------------------------------ Import
-import { View, Text, StyleSheet } from "react-native";
-import { TextInput } from "react-native-paper";
-import { colors } from "../utils/colors";
-
-export const Focus = () => {
-  const [subject, setSubject] = useState(null); // ------------------------------------ Set Constant
-
-  console.log(subject);
-
-  return (
-    <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        //
-        ---------------------------------------------------------------------------
-        Usage
-        <TextInput
-          onChangeText={setSubject}
-          label="What would you like to focus on?"
-        />
-      </View>
-    </View>
-  );
-};
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  inputContainer: {
-    flex: 0.5,
-    padding: 50,
-    justifyContent: "top",
-  },
-});
-```
-
-### Fragment
-
-- define multiple elements without defining in same view
-
-`<>#Views#</>`
-
-```js
-<>
-  <View style={styles.timingButton}>
-    <RoundedButton size={75} title="10" onPress={() => onChangeTime(10)} />
-  </View>
-  <View style={styles.timingButton}>
-    <RoundedButton size={75} title="15" onPress={() => onChangeTime(15)} />
-  </View>
-  <View style={styles.timingButton}>
-    <RoundedButton size={75} title="20" onPress={() => onChangeTime(20)} />
-  </View>
-</>
 ```
