@@ -38,6 +38,12 @@
 
 # Components as Compiled
 
+- Import Core Components
+
+```js
+import { StyleSheet, Text, View, Button } from "react-native";
+```
+
 | Web Browser | Native Components (android) | Native Components (iOS) | React Native JSX |
 | ----------- | --------------------------- | ----------------------- | ---------------- |
 | `<div>`     | android.view                | UIView                  | `<View>`         |
