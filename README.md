@@ -42,3 +42,31 @@
 | ----------- | --------------------------- | ----------------------- | ---------------- |
 | `<div>`     | android.view                | UIView                  | `<View>`         |
 | `<input>`   | EditText                    | UITextField             | `<TextInput>`    |
+
+## Core Componets
+
+- View - (div) - can only hold other components
+- Text
+- StyleSheet
+- Activity Indicator
+- Button
+- FlatList
+- Image
+- ImageBackground
+- KeyboardAvoidingView
+- Modal
+- Pressable
+- RefreshControl
+- ScrollView
+- SectionList
+- StatusBar
+- Switch
+- TextInput
+- TouchableHighlight
+- TouchableOpacity
+- TouchableWithoutFeedback
+- VirtualizedList
+
+## Life Cycle
+
+- App.js - root
