@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from "react";
 import {
   Text,
   View,
@@ -8,13 +8,33 @@ import {
   StatusBar,
 } from "react-native";
 import Constants from "expo-constants";
-// colors
+// Colors
 import { colors } from "./src/utils/colors";
+// Features
+import { Focus } from "./src/features/Focus";
+import { Timer } from "./src/features/Timer";
+import { FocusHistory } from "./src/features/FocusHistory";
 
 export default function App() {
+  const [currentSubject, setCurrentSubject] = useState(null);
+  const [history, setHistory] = useState([]);
+
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.text}>Hello World</Text>
+      {!currentSubject ? (
+        <>
+          <Focus addSubject={setCurrentSubject} />
+          <FocusHistory history={history} />
+        </>
+      ) : (
+        <Timer
+          focusSubject={currentSubject}
+          onTimerEnd={(subject) => {
+            setHistory([...history, subject]);
+          }}
+          clearSubject={() => setCurrentSubject(null)}
+        />
+      )}
     </SafeAreaView>
   );
 }
@@ -22,10 +42,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     backgroundColor: colors.darkBlue,
-  },
-  text: {
-    color: colors.white,
   },
 });
