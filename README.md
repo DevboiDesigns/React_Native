@@ -78,6 +78,46 @@ import { StyleSheet, Text, View, Button } from "react-native";
 - TouchableWithoutFeedback
 - VirtualizedList
 
-## Life Cycle
+# Life Cycle
 
 - App.js - root
+
+# Styles
+
+- Inline
+
+```js
+<Text style={{ margin: 14, borderWidth: 2, borderColor: "blue", padding: 16 }}>
+  Hello World
+</Text>
+```
+
+- scalable
+
+```js
+<Text style={styles.textView}>Hello World</Text>;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  textView: {
+    margin: 14,
+    borderWidth: 2,
+    borderColor: "blue",
+    padding: 16,
+  },
+});
+```
+
+## Color parameters
+
+- `borderColor: #fff`
+- `borderColor: #cccfff`
+- `borderColor: rgb()`
+- `borderColor: hsl()`
+- `borderColor: rgba()`
+- `borderColor: 'red'`
