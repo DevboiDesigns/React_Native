@@ -38,5 +38,5 @@
 
 | Web Browser | Native Components (android) | Native Components (iOS) | React Native JSX |
 | ----------- | --------------------------- | ----------------------- | ---------------- |
-| <div>       | android.view                | UIView                  | <View>           |
-| <input>     | EditText                    | UITextField             | <TextInput>      |
+| `<div>`     | android.view                | UIView                  | `<View>`         |
+| `<input>`   | EditText                    | UITextField             | `<TextInput>`    |
