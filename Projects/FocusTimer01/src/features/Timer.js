@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, Platform, Vibration } from "react-native";
-import { ProgressBar } from "react-native-paper";
-import { useKeepAwake } from "expo-keep-awake";
-import { Countdown } from "../components/Countdown";
-import { RoundedButton } from "../components/RoundedButton";
-import { Timing } from "./Timing";
-import { colors } from "../utils/colors";
-import { spacing } from "../utils/sizes";
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Platform, Vibration } from 'react-native';
+import { ProgressBar } from 'react-native-paper';
+import { useKeepAwake } from 'expo-keep-awake';
+import { Countdown } from '../components/Countdown';
+import { RoundedButton } from '../components/RoundedButton';
+import { Timing } from './Timing';
+import { colors } from '../utils/colors';
+import { spacing } from '../utils/sizes';
 
 const ONE_SECOND_IN_MS = 1000;
 
@@ -29,7 +29,7 @@ export const Timer = ({ focusSubject, clearSubject, onTimerEnd }) => {
     setIsStarted(false);
     setProgress(1);
     reset();
-    onTimerEnd(focusSubject);
+    onTimerEnd(focusSubject)
   };
 
   return (
@@ -92,34 +92,34 @@ const styles = StyleSheet.create({
   },
   countdown: {
     flex: 0.5,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   buttonWrapper: {
     flex: 0.3,
-    flexDirection: "row",
+    flexDirection: 'row',
     paddingTop: spacing.md,
-    justifyContent: "center",
-    alignItems: "center",
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   timingWrapper: {
     flex: 0.1,
-    flexDirection: "row",
+    flexDirection: 'row',
     paddingTop: spacing.xxl,
     paddingBottom: spacing.xxl,
   },
   clearSubjectWrapper: {
-    flexDirection: "row",
-    justifyContent: "center",
+    flexDirection: 'row',
+    justifyContent: 'center',
     paddingTop: spacing.lg,
   },
   title: {
     color: colors.white,
-    fontWeight: "bold",
-    textAlign: "center",
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   task: {
     color: colors.white,
-    textAlign: "center",
+    textAlign: 'center',
   },
 });
