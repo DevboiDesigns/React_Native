@@ -78,6 +78,86 @@ import { StyleSheet, Text, View, Button } from "react-native";
 - TouchableWithoutFeedback
 - VirtualizedList
 
+## ScrollView
+
+- nest in `<View>` to control style and spacing
+
+```tsx
+<View style={styles.goalsContainer}>
+  <ScrollView alwaysBounceVertical={false}>
+    {courseGoals.map((goal) => (
+      <View style={styles.goalItem} key={String(goalIndex++)}>
+        <Text style={styles.goalText}>{goal}</Text>
+      </View>
+    ))}
+  </ScrollView>
+</View>
+```
+
+## Flatlist
+
+- dynamic lists that can be very long
+- will render view only when user scrolls to index
+- best practice: data should be an object with key property
+
+```tsx
+{ text: enteredGoalText, key: Math.random().toString() }
+```
+
+**Props**
+
+- data: `data={courseGoals}` (array of data)
+- renderItem: `(itemData) => {}` (view that will be rendered to present data)
+  1. itemData.index
+  2. itemData.item
+
+```tsx
+<View style={styles.goalsContainer}>
+  <FlatList
+    data={courseGoals}
+    renderItem={(itemData) => {
+      return (
+        <View style={styles.goalItem}>
+          <Text style={styles.goalText}>{itemData.item.text}</Text>
+        </View>
+      );
+    }}
+    alwaysBounceVertical={false}
+  />
+</View>
+```
+
+**If you can NOT manipulate data to have key prop**
+
+- Add this property to `Flatlist`
+
+`keyExtractor={(item, index) => {}}`
+
+**Item**
+
+```tsx
+{ text: enteredGoalText, id: Math.random().toString() }
+```
+
+**Example**
+
+```tsx
+<FlatList
+  data={courseGoals}
+  renderItem={(itemData) => {
+    return (
+      <View style={styles.goalItem}>
+        <Text style={styles.goalText}>{itemData.item.text}</Text>
+      </View>
+    );
+  }}
+  keyExtractor={(item, index) => {
+    return item.id;
+  }}
+  alwaysBounceVertical={false}
+/>
+```
+
 # Life Cycle
 
 - App.tsx - root
@@ -187,7 +267,7 @@ const styles = StyleSheet.create({
 - divides space by ratio of values
 - highest number gets the most space and distrubeted accordingly for rest of views
 
-## iOS vs Android
+# iOS vs Android
 
 - Text components on iOS does not have `borderRadius`
 
@@ -209,86 +289,6 @@ goalItem: {
   goalText: {
     color: 'white',
   },
-```
-
-## ScrollView
-
-- nest in `<View>` to control style and spacing
-
-```tsx
-<View style={styles.goalsContainer}>
-  <ScrollView alwaysBounceVertical={false}>
-    {courseGoals.map((goal) => (
-      <View style={styles.goalItem} key={String(goalIndex++)}>
-        <Text style={styles.goalText}>{goal}</Text>
-      </View>
-    ))}
-  </ScrollView>
-</View>
-```
-
-## Flatlist
-
-- dynamic lists that can be very long
-- will render view only when user scrolls to index
-- best practice: data should be an object with key property
-
-```tsx
-{ text: enteredGoalText, key: Math.random().toString() }
-```
-
-**Props**
-
-- data: `data={courseGoals}` (array of data)
-- renderItem: `(itemData) => {}` (view that will be rendered to present data)
-  1. itemData.index
-  2. itemData.item
-
-```tsx
-<View style={styles.goalsContainer}>
-  <FlatList
-    data={courseGoals}
-    renderItem={(itemData) => {
-      return (
-        <View style={styles.goalItem}>
-          <Text style={styles.goalText}>{itemData.item.text}</Text>
-        </View>
-      );
-    }}
-    alwaysBounceVertical={false}
-  />
-</View>
-```
-
-**If you can NOT manipulate data to have key prop**
-
-- Add this property to `Flatlist`
-
-`keyExtractor={(item, index) => {}}`
-
-**Item**
-
-```tsx
-{ text: enteredGoalText, id: Math.random().toString() }
-```
-
-**Example**
-
-```tsx
-<FlatList
-  data={courseGoals}
-  renderItem={(itemData) => {
-    return (
-      <View style={styles.goalItem}>
-        <Text style={styles.goalText}>{itemData.item.text}</Text>
-      </View>
-    );
-  }}
-  keyExtractor={(item, index) => {
-    return item.id;
-  }}
-  alwaysBounceVertical={false}
-/>
 ```
 
 # Splitting Components
