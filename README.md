@@ -226,6 +226,47 @@ pressedItem: {
 </Modal>
 ```
 
+## Image
+
+```jsx
+<Image source={} />
+```
+
+- create images folder in assets folder
+
+`assets -> images`
+
+```jsx
+<Image source={require('../assets/images/target.png')} style={styles.image} />
+```
+
+## StatusBar
+
+- allows you to set config for users phone status bar
+- light & dark mode (auto does not always work)
+
+```jsx
+<StatusBar style="light" />
+```
+
+# Fragment Views
+
+- can wrap in Fragment to duplicate views without using `<View>`
+
+`<></>`
+
+```jsx
+ <>
+      <StatusBar />
+      <View style={styles.appContainer}>
+        <Button
+          title="Add New Goal"
+          color="#5e0acc"
+          onPress={showModalHandler}
+        />
+ </>
+```
+
 # Life Cycle
 
 - App.js - root
@@ -279,6 +320,29 @@ const styles = StyleSheet.create({
     padding: 16,
   },
 });
+```
+
+## Background Color - global
+
+- in `app.json`
+- add property `"backgroundColor": "#FFFFFF"`
+- does not apply to `Modal`s
+
+```json
+"expo": {
+    "name": "ExampleExpoProj",
+    "slug": "ExampleExpoProj",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "backgroundColor": "#FFFFFF", // ----------------
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+}
 ```
 
 ## Color parameters
