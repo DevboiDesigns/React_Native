@@ -46,7 +46,7 @@
 - Import Core Components
 
 ```jsx
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button } from 'react-native';
 ```
 
 | Web Browser | Native Components (android) | Native Components (iOS) | React Native JSX |
@@ -182,7 +182,7 @@ import { StyleSheet, Text, View, Button } from "react-native";
 ```jsx
 <View style={styles.goalItem}>
   <Pressable
-    android_ripple={{ color: "#dddddd" }}
+    android_ripple={{ color: '#dddddd' }}
     onPress={props.deleteGoal.bind(this, props.id)}
   >
     <Text style={styles.goalText}>{props.text}</Text>
@@ -214,7 +214,11 @@ pressedItem: {
 - pop up / slide up view that requires action and then disappear
 
 ```jsx
-
+<Modal visible={props.showModal} animationType="slide">
+  <View style={styles.inputContainer}>
+    <Button title="Add Goal" onPress={props.addGoalHandler}></Button>
+  </View>
+</Modal>
 ```
 
 # Life Cycle
@@ -230,7 +234,7 @@ pressedItem: {
 **Example**
 
 ```jsx
-import { useState } from "react";
+import { useState } from 'react';
 
 const [courseGoals, setCourseGoals] = useState([]);
 
@@ -246,7 +250,7 @@ function deleteGoalHandler(id) {
 - Inline
 
 ```jsx
-<Text style={{ margin: 14, borderWidth: 2, borderColor: "blue", padding: 16 }}>
+<Text style={{ margin: 14, borderWidth: 2, borderColor: 'blue', padding: 16 }}>
   Hello World
 </Text>
 ```
@@ -259,14 +263,14 @@ function deleteGoalHandler(id) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   textView: {
     margin: 14,
     borderWidth: 2,
-    borderColor: "blue",
+    borderColor: 'blue',
     padding: 16,
   },
 });
@@ -356,7 +360,7 @@ goalItem: {
 
 ```jsx
 // do not need to import React anymore
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from 'react-native';
 
 function GoalItem(props) {
   return (
@@ -373,10 +377,10 @@ const styles = StyleSheet.create({
     margin: 8,
     padding: 8,
     borderRadius: 6,
-    backgroundColor: "#5e0acc",
+    backgroundColor: '#5e0acc',
   },
   goalText: {
-    color: "white",
+    color: 'white',
   },
 });
 ```
@@ -384,7 +388,7 @@ const styles = StyleSheet.create({
 **Example Usage**
 
 ```jsx
-import GoalItem from "./components/GoalItem";
+import GoalItem from './components/GoalItem';
 
 <FlatList
   data={courseGoals}
@@ -396,4 +400,18 @@ import GoalItem from "./components/GoalItem";
   }}
   alwaysBounceVertical={false}
 />;
+```
+
+# Conditional View Render
+
+```jsx
+{
+  modalIsVisible && (
+    <GoalInput
+      goalInputHandler={goalInputHandler}
+      addGoalHandler={addGoalHandler}
+      enteredGoalText={enteredGoalText}
+    />
+  );
+}
 ```
