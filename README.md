@@ -158,6 +158,55 @@ import { StyleSheet, Text, View, Button } from "react-native";
 />
 ```
 
+## Pressable (replacement for all Touchable comp's)
+
+- wrap view with `<Pressable>` component
+- provide function to `onPress={}` - handles tap
+
+**Example**
+
+```tsx
+<Pressable onPress={}>
+  <View style={styles.goalItem}>
+    <Text style={styles.goalText}>{props.text}</Text>
+  </View>
+</Pressable>
+```
+
+### Android (ripple effect)
+
+- make sure to set Pressable on Text
+
+```tsx
+<View style={styles.goalItem}>
+  <Pressable
+    android_ripple={{ color: "#dddddd" }}
+    onPress={props.deleteGoal.bind(this, props.id)}
+  >
+    <Text style={styles.goalText}>{props.text}</Text>
+  </Pressable>
+</View>
+```
+
+### iOS
+
+- set style property from pressed object
+
+```tsx
+<Pressable
+  onPress={props.deleteGoal.bind(this, props.id)}
+  // Object destructuring to get 'pressed'
+  style={({ pressed }) => pressed && styles.pressedItem}
+>
+  <Text style={styles.goalText}>{props.text}</Text>
+</Pressable>
+
+// Style
+pressedItem: {
+    opacity: 0.5,
+  },
+```
+
 # Life Cycle
 
 - App.tsx - root
@@ -337,53 +386,4 @@ import GoalItem from "./components/GoalItem";
   }}
   alwaysBounceVertical={false}
 />;
-```
-
-# Pressable (replacement for all Touchable comp's)
-
-- wrap view with `<Pressable>` component
-- provide function to `onPress={}` - handles tap
-
-**Example**
-
-```tsx
-<Pressable onPress={}>
-  <View style={styles.goalItem}>
-    <Text style={styles.goalText}>{props.text}</Text>
-  </View>
-</Pressable>
-```
-
-## Android (ripple effect)
-
-- make sure to set Pressable on Text
-
-```tsx
-<View style={styles.goalItem}>
-  <Pressable
-    android_ripple={{ color: "#dddddd" }}
-    onPress={props.deleteGoal.bind(this, props.id)}
-  >
-    <Text style={styles.goalText}>{props.text}</Text>
-  </Pressable>
-</View>
-```
-
-## iOS
-
-- set style property from pressed object
-
-```tsx
-<Pressable
-  onPress={props.deleteGoal.bind(this, props.id)}
-  // Object destructuring to get 'pressed'
-  style={({ pressed }) => pressed && styles.pressedItem}
->
-  <Text style={styles.goalText}>{props.text}</Text>
-</Pressable>
-
-// Style
-pressedItem: {
-    opacity: 0.5,
-  },
 ```
