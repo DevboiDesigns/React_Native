@@ -215,8 +215,13 @@ pressedItem: {
 
 ```jsx
 <Modal visible={props.showModal} animationType="slide">
-  <View style={styles.inputContainer}>
-    <Button title="Add Goal" onPress={props.addGoalHandler}></Button>
+  <View style={styles.buttonView}>
+    <View style={styles.button}>
+      <Button title="Add Goal" onPress={props.addGoalHandler}></Button>
+    </View>
+    <View style={styles.button}>
+      <Button title="Cancel" onPress={props.hideModal} />
+    </View>
   </View>
 </Modal>
 ```
