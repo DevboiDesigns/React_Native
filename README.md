@@ -81,6 +81,7 @@ import { StyleSheet, Text, View, Button } from "react-native";
 # Life Cycle
 
 - App.js - root
+- all components must be conntained within a view
 
 # Styles
 
@@ -269,4 +270,52 @@ goalItem: {
   }}
   alwaysBounceVertical={false}
 />
+```
+
+# Splitting Components
+
+**Example Componet**
+
+```js
+// do not need to import React anymore
+import { View, Text, StyleSheet } from "react-native";
+
+function GoalItem(props) {
+  return (
+    <View style={styles.goalItem}>
+      <Text style={styles.goalText}>{props.text}</Text>
+    </View>
+  );
+}
+
+export default GoalItem;
+
+const styles = StyleSheet.create({
+  goalItem: {
+    margin: 8,
+    padding: 8,
+    borderRadius: 6,
+    backgroundColor: "#5e0acc",
+  },
+  goalText: {
+    color: "white",
+  },
+});
+```
+
+**Example Usage**
+
+```js
+import GoalItem from "./components/GoalItem";
+
+<FlatList
+  data={courseGoals}
+  renderItem={(itemData) => {
+    return <GoalItem text={itemData.item.text} />;
+  }}
+  keyExtractor={(item, index) => {
+    return item.id;
+  }}
+  alwaysBounceVertical={false}
+/>;
 ```
