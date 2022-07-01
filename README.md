@@ -45,7 +45,7 @@
 
 - Import Core Components
 
-```js
+```tsx
 import { StyleSheet, Text, View, Button } from "react-native";
 ```
 
@@ -80,14 +80,33 @@ import { StyleSheet, Text, View, Button } from "react-native";
 
 # Life Cycle
 
-- App.js - root
+- App.tsx - root
 - all components must be conntained within a view
+
+# State
+
+- `useState()`
+- should call a function to update state not change state directly
+
+**Example**
+
+```tsx
+import { useState } from "react";
+
+const [courseGoals, setCourseGoals] = useState([]);
+
+function deleteGoalHandler(id) {
+  setCourseGoals((currentCourseGoals) => {
+    return currentCourseGoals.filter((goal) => goal.id !== id);
+  });
+}
+```
 
 # Styles
 
 - Inline
 
-```js
+```tsx
 <Text style={{ margin: 14, borderWidth: 2, borderColor: "blue", padding: 16 }}>
   Hello World
 </Text>
@@ -95,7 +114,7 @@ import { StyleSheet, Text, View, Button } from "react-native";
 
 - scalable
 
-```js
+```tsx
 <Text style={styles.textView}>Hello World</Text>;
 
 const styles = StyleSheet.create({
@@ -172,7 +191,7 @@ const styles = StyleSheet.create({
 
 - Text components on iOS does not have `borderRadius`
 
-```js
+```tsx
 <View style={styles.goalItem} key={String(goalIndex++)}>
   <Text style={styles.textStyle}>{goal}</Text>
 </View>
@@ -180,7 +199,7 @@ const styles = StyleSheet.create({
 
 - style
 
-```js
+```tsx
 goalItem: {
     margin: 8,
     padding: 8,
@@ -196,7 +215,7 @@ goalItem: {
 
 - nest in `<View>` to control style and spacing
 
-```js
+```tsx
 <View style={styles.goalsContainer}>
   <ScrollView alwaysBounceVertical={false}>
     {courseGoals.map((goal) => (
@@ -214,7 +233,7 @@ goalItem: {
 - will render view only when user scrolls to index
 - best practice: data should be an object with key property
 
-```js
+```tsx
 { text: enteredGoalText, key: Math.random().toString() }
 ```
 
@@ -225,7 +244,7 @@ goalItem: {
   1. itemData.index
   2. itemData.item
 
-```js
+```tsx
 <View style={styles.goalsContainer}>
   <FlatList
     data={courseGoals}
@@ -249,13 +268,13 @@ goalItem: {
 
 **Item**
 
-```js
+```tsx
 { text: enteredGoalText, id: Math.random().toString() }
 ```
 
 **Example**
 
-```js
+```tsx
 <FlatList
   data={courseGoals}
   renderItem={(itemData) => {
@@ -276,7 +295,7 @@ goalItem: {
 
 **Example Componet**
 
-```js
+```tsx
 // do not need to import React anymore
 import { View, Text, StyleSheet } from "react-native";
 
@@ -305,7 +324,7 @@ const styles = StyleSheet.create({
 
 **Example Usage**
 
-```js
+```tsx
 import GoalItem from "./components/GoalItem";
 
 <FlatList
@@ -318,4 +337,34 @@ import GoalItem from "./components/GoalItem";
   }}
   alwaysBounceVertical={false}
 />;
+```
+
+# Pressable (replacement for all Touchable comp's)
+
+- wrap view with `<Pressable>` component
+- provide function to `onPress={}` - handles tap
+
+**Example**
+
+```tsx
+<Pressable onPress={}>
+  <View style={styles.goalItem}>
+    <Text style={styles.goalText}>{props.text}</Text>
+  </View>
+</Pressable>
+```
+
+## Android (ripple effect)
+
+- make sure to set Pressable on Text
+
+```tsx
+<View style={styles.goalItem}>
+  <Pressable
+    android_ripple={{ color: "#dddddd" }}
+    onPress={props.deleteGoal.bind(this, props.id)}
+  >
+    <Text style={styles.goalText}>{props.text}</Text>
+  </Pressable>
+</View>
 ```
