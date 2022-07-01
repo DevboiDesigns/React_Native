@@ -121,3 +121,58 @@ const styles = StyleSheet.create({
 - `borderColor: hsl()`
 - `borderColor: rgba()`
 - `borderColor: 'red'`
+
+## Width parameters
+
+- `width: '80%'`
+
+# Flexbox
+
+- all views by default use flexbox
+- defaults to column
+- layouts typically created with
+- similar to browser CSS flexbox
+- -> Cross axis (left to right)
+- ^ Main axis (top to bottom)
+
+## Setting direction
+
+- `flexDirection: 'column' | 'row'` (row: left to right)
+
+### Main axis
+
+- row: left to right
+- row-reverse: right to left
+- column: top to bottom
+- column-reverse: bottom to top
+
+**Align with**
+
+- `justifyContent: ''`
+
+### Cross axis
+
+- row: top to bottom
+- row-reverse: bottom to top
+- column: left to right
+- column-reverse: right to left
+
+**Align with**
+
+- `alignItems: ''`
+
+### Flex property
+
+- apply to child views
+- divides space by ratio of values
+- highest number gets the most space and distrubeted accordingly for rest of views
+
+## iOS vs Android
+
+- Text components on iOS does not have `borderRadius`
+
+```js
+<View style={styles.goalItem} key={String(goalIndex++)}>
+  <Text style={styles.textStyle}>{goal}</Text>
+</View>
+```
