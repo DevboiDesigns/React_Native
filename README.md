@@ -176,3 +176,33 @@ const styles = StyleSheet.create({
   <Text style={styles.textStyle}>{goal}</Text>
 </View>
 ```
+
+- style
+
+```js
+goalItem: {
+    margin: 8,
+    padding: 8,
+    borderRadius: 6,
+    backgroundColor: '#5e0acc',
+  },
+  goalText: {
+    color: 'white',
+  },
+```
+
+## ScrollView
+
+- nest in `<View>` to control style and spacing
+
+```js
+<View style={styles.goalsContainer}>
+  <ScrollView>
+    {courseGoals.map((goal) => (
+      <View style={styles.goalItem} key={String(goalIndex++)}>
+        <Text style={styles.goalText}>{goal}</Text>
+      </View>
+    ))}
+  </ScrollView>
+</View>
+```
