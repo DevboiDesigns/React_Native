@@ -368,3 +368,22 @@ import GoalItem from "./components/GoalItem";
   </Pressable>
 </View>
 ```
+
+## iOS
+
+- set style property from pressed object
+
+```tsx
+<Pressable
+  onPress={props.deleteGoal.bind(this, props.id)}
+  // Object destructuring to get 'pressed'
+  style={({ pressed }) => pressed && styles.pressedItem}
+>
+  <Text style={styles.goalText}>{props.text}</Text>
+</Pressable>
+
+// Style
+pressedItem: {
+    opacity: 0.5,
+  },
+```
