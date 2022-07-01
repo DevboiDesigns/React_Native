@@ -197,7 +197,7 @@ goalItem: {
 
 ```js
 <View style={styles.goalsContainer}>
-  <ScrollView>
+  <ScrollView alwaysBounceVertical={false}>
     {courseGoals.map((goal) => (
       <View style={styles.goalItem} key={String(goalIndex++)}>
         <Text style={styles.goalText}>{goal}</Text>
@@ -205,4 +205,68 @@ goalItem: {
     ))}
   </ScrollView>
 </View>
+```
+
+## Flatlist
+
+- dynamic lists that can be very long
+- will render view only when user scrolls to index
+- best practice: data should be an object with key property
+
+```js
+{ text: enteredGoalText, key: Math.random().toString() }
+```
+
+**Props**
+
+- data: `data={courseGoals}` (array of data)
+- renderItem: `(itemData) => {}` (view that will be rendered to present data)
+  1. itemData.index
+  2. itemData.item
+
+```js
+<View style={styles.goalsContainer}>
+  <FlatList
+    data={courseGoals}
+    renderItem={(itemData) => {
+      return (
+        <View style={styles.goalItem}>
+          <Text style={styles.goalText}>{itemData.item.text}</Text>
+        </View>
+      );
+    }}
+    alwaysBounceVertical={false}
+  />
+</View>
+```
+
+**If you can NOT manipulate data to have key prop**
+
+- Add this property to `Flatlist`
+
+`keyExtractor={(item, index) => {}}`
+
+**Item**
+
+```js
+{ text: enteredGoalText, id: Math.random().toString() }
+```
+
+**Example**
+
+```js
+<FlatList
+  data={courseGoals}
+  renderItem={(itemData) => {
+    return (
+      <View style={styles.goalItem}>
+        <Text style={styles.goalText}>{itemData.item.text}</Text>
+      </View>
+    );
+  }}
+  keyExtractor={(item, index) => {
+    return item.id;
+  }}
+  alwaysBounceVertical={false}
+/>
 ```
